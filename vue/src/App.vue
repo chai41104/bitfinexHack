@@ -1,5 +1,12 @@
 <template>
   <div id="main" class="container">
+
+    <div class="nav">
+      <ul>
+        <li><router-link to="/">Trades</router-link></li>
+        <li><router-link to="/margin">Margins</router-link></li>
+      </ul>
+    </div>
     <router-view/>
   </div>
 </template>

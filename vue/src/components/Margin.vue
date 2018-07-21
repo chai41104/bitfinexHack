@@ -1,6 +1,6 @@
 <template>
   <div class="crypto-list">
-    <h1>Crypto Trade Risk Analyser</h1>
+    <h1>- Margins</h1>
     <table>
       <thead>
         <tr>
@@ -39,11 +39,11 @@
       </tbody>  
     </table>
   </div>
-
 </template>
 
+
 <script>
-const BFX = require('bitfinex-api-node')
+// const BFX = require('bitfinex-api-node')
 import axios from 'axios'
 
 
@@ -53,12 +53,16 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       entries: [],
-      tickers: require('./initialTickers.json'),
+      tickers: require('./initialMarginTickers.json'),
       oldTickers: null
 
     }
   },
   mounted () {
+
+    if (localStorage.getItem('marginTickers')) {
+        this.tickers = localStorage.getItem('marginTickers')
+    }
 
     this.oldTickers = JSON.parse(JSON.stringify(this.tickers))
 
@@ -67,11 +71,13 @@ export default {
     // }, 1000)
 
     window.setInterval(() => {
-      axios.get('http://localhost:3000', 'get').then(res => {
+      axios.get('http://localhost:8888', 'get').then(res => {
         console.log(res.data)
         for (var i=0; i<res.data.length; i++) {
           let symbol = res.data[i].symbol
           this.tickers[symbol] = res.data[i]
+          localStorage.setItem('margintickers', this.tickers) 
+
         }
       })
     }, 3000)
@@ -95,10 +101,10 @@ export default {
           // console.log(this.$refs.bid[0])
           // alert(this.tickers[this.symbols[i]].bid, newValue[this.symbols[i]])
           this.animateElement(i, "bid")
-          this.animateElement(i, "bidPeriod")
+          // this.animateElement(i, "bidPeriod")
           this.animateElement(i,"bidSize")
           this.animateElement(i,"ask")
-          this.animateElement(i,"askPeriod")
+          // this.animateElement(i,"askPeriod")
           this.animateElement(i,"askSize")
           this.animateElement(i,"dailyChangePerc")
           this.animateElement(i,"lastPrice")

@@ -1,0 +1,8 @@
+{
+    "fBTC": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7},
+    "fUSD": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7},
+    "fETH": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7},
+    "fEOS": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7},
+    "fDSH": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7},
+    "fETC": {"frr":0.00017137,"bid":0.2716,"bidPeriod":72,"bidSize":6259447.1013,"ask":0.004411,"askPeriod":4,"askSize":111053.9112,"dailyChange":-0.098,"dailyChangePerc":-0.9424,"lastPrice":0.003195,"volume":119189.6462,"high":0.004507,"low":3.7e-7}
+}
