@@ -1,12 +1,6 @@
-require('babel-register')({
-	presets:['react']
-})
 
 var express = require('express');
 var app = express();
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
-var Component = require('./MainComponent.js');
 var path = require('path');
 
 const BFX = require('bitfinex-api-node')
