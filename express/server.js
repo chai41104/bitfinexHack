@@ -36,7 +36,6 @@ ws.on('open', () => {
   {
 	  //ws.subscribeTicker('fUSD')
 	  let name = 't'+ symbol_list[i].toUpperCase()
-	  console.log(name)
 	  ws.subscribeTicker(name)
   }
 	// ws.subscribeTicker('fUSD')
@@ -49,17 +48,16 @@ ws.on('open', () => {
 // })
 
 ws.onTicker({}, (ticker) => {
-  console.log( ticker.toJS())
   data.push(ticker.toJS())
 })
 
 ws.open()
 
 // app.use(express.static(path.join(__dirname, './www')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', function(request, response){
 	response.setHeader('Access-Control-Allow-Origin', '*')
-	console.log('i was here')
 	var res = []
 	// let end = Math.min(data.length, start+10)
 	let end = data.length
@@ -72,10 +70,7 @@ app.get('/', function(request, response){
 	start = end;
 });
 
-
 var PORT=3000;
 app.listen(PORT, function(){
 	console.log('http://localhost:' + PORT);
 });
-	
-	
