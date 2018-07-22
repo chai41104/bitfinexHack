@@ -75,5 +75,8 @@ timestamp_start = int(np.floor(time.time())) - days_back * 24 * 60 * 60
 
 # main
 if __name__ == '__main__':
-    
+    data = load_median_percent_change()
+    for key, val_d in data.items():
+        symbol_id = bitfinex.market_id(key)
+        print(symbol_id)
   
