@@ -77,3 +77,7 @@ var PORT=3000;
 app.listen(PORT, function(){
 	console.log('http://localhost:' + PORT);
 });
+
+app.get('/sendorder', function(request, response) {
+  
+})
