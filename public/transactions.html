@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Morris charts -->
   <link rel="stylesheet" href="../../bower_components/morris.js/morris.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -38,9 +40,9 @@
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>ZZ</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Zing Zing</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -121,8 +123,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Morris Charts
-        <small>Preview sample</small>
+        BTC/USD
       </h1>
     </section>
 
@@ -134,7 +135,7 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
+              <h3 class="box-title">Buy</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -142,7 +143,7 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+              <div class="chart" id="buy-chart" style="height: 300px; position: relative;"></div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -155,7 +156,7 @@
             <!-- DONUT CHART -->
             <div class="box box-danger">
                 <div class="box-header with-border">
-                <h3 class="box-title">Donut Chart</h3>
+                <h3 class="box-title">Sell</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -163,7 +164,7 @@
                 </div>
                 </div>
                 <div class="box-body chart-responsive">
-                <div class="chart" id="donut2" style="height: 300px; position: relative;"></div>
+                <div class="chart" id="sell-chart" style="height: 300px; position: relative;"></div>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -174,80 +175,24 @@
       <div class="row">
           <div class="col-md-12">
               <!-- /.col (LEFT) -->
-              <div class="box">
+              <div class="box box-info">
                   <div class="box-header">
-                  <h3 class="box-title">Data Table With Full Features</h3>
+                  <h3 class="box-title">Historical Transactions</h3>
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
-                      <th>Rendering engine</th>
-                      <th>Browser</th>
-                      <th>Platform(s)</th>
-                      <th>Engine version</th>
-                      <th>CSS grade</th>
+                      <th>Timestamp</th>
+                      <th>Tid</th>
+                      <th>Price</th>
+                      <th>Amount</th>
+                      <th>Exchange</th>
+                      <th>Type</th>
                       </tr>
                       </thead>
-                      <tbody>
-                      <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                          Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td> 4</td>
-                      <td>X</td>
-                      </tr>
-                      <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                          Explorer 5.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5</td>
-                      <td>C</td>
-                      </tr>
-                      <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                          Explorer 5.5
-                      </td>
-                      <td>Win 95+</td>
-                      <td>5.5</td>
-                      <td>A</td>
-                      </tr>
-                      <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                          Explorer 6
-                      </td>
-                      <td>Win 98+</td>
-                      <td>6</td>
-                      <td>A</td>
-                      </tr>
-                      <tr>
-                      <td>Trident</td>
-                      <td>Internet Explorer 7</td>
-                      <td>Win XP SP2+</td>
-                      <td>7</td>
-                      <td>A</td>
-                      </tr>
-                      <tr>
-                      <td>Trident</td>
-                      <td>AOL browser (AOL desktop)</td>
-                      <td>Win XP</td>
-                      <td>6</td>
-                      <td>A</td>
-                      </tr>
-                      <tr>
-                      <td>Gecko</td>
-                      <td>Firefox 1.0</td>
-                      <td>Win 98+ / OSX.2+</td>
-                      <td>1.7</td>
-                      <td>A</td>
-                      </tr>
+                      <tbody id='table'>
                       </tbody>
                   </table>
                   </div>
@@ -454,6 +399,9 @@
 <!-- Morris.js charts -->
 <script src="../../bower_components/raphael/raphael.min.js"></script>
 <script src="../../bower_components/morris.js/morris.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -464,30 +412,50 @@
 <script>
   $(function () {
     "use strict";
+    $('#example1').DataTable();
     //DONUT CHART
     var donut = new Morris.Donut({
-      element: 'sales-chart',
+      element: 'buy-chart',
       resize: true,
       colors: ["#FFC200", "#f56954", "#00a65a"],
       data: [
-        {label: "Amber", value: 12},
-        {label: "Red", value: 30},
-        {label: "Green", value: 20}
+        {label: "Amber", value: 30},
+        {label: "Red", value: 40},
+        {label: "Green", value: 30}
       ],
       hideHover: 'auto'
     });
     var donut = new Morris.Donut({
-      element: 'donut2',
+      element: 'sell-chart',
       resize: true,
       colors: ["#FFC200", "#f56954", "#00a65a"],
       data: [
-        {label: "Amber", value: 12},
-        {label: "Red", value: 30},
-        {label: "Green", value: 20}
+        {label: "Amber", value: 20},
+        {label: "Red", value: 70},
+        {label: "Green", value: 10}
       ],
       hideHover: 'auto'
     });
+
   });
+
+  const transactions = [{"timestamp":1532258988,"tid":271325643,"price":"7455.9","amount":"0.366","exchange":"bitfinex","type":"buy"},{"timestamp":1532258988,"tid":271325642,"price":"7455.9","amount":"0.062","exchange":"bitfinex","type":"buy"},{"timestamp":1532258988,"tid":271325641,"price":"7455.9","amount":"0.01","exchange":"bitfinex","type":"buy"},{"timestamp":1532258988,"tid":271325640,"price":"7455.9","amount":"0.062","exchange":"bitfinex","type":"buy"},{"timestamp":1532258988,"tid":271325639,"price":"7455.9","amount":"2.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258980,"tid":271325614,"price":"7455.97225922","amount":"0.151104","exchange":"bitfinex","type":"sell"},{"timestamp":1532258980,"tid":271325612,"price":"7456.0","amount":"0.03","exchange":"bitfinex","type":"sell"},{"timestamp":1532258980,"tid":271325611,"price":"7456.1","amount":"0.004","exchange":"bitfinex","type":"sell"},{"timestamp":1532258976,"tid":271325601,"price":"7456.36594967","amount":"0.06681512","exchange":"bitfinex","type":"sell"},{"timestamp":1532258976,"tid":271325599,"price":"7456.36594967","amount":"0.13363025","exchange":"bitfinex","type":"sell"},{"timestamp":1532258962,"tid":271325545,"price":"7456.10348937","amount":"0.0229","exchange":"bitfinex","type":"sell"},{"timestamp":1532258948,"tid":271325530,"price":"7456.2","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258938,"tid":271325513,"price":"7456.2","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258938,"tid":271325512,"price":"7457.2","amount":"0.22","exchange":"bitfinex","type":"buy"},{"timestamp":1532258938,"tid":271325511,"price":"7456.3","amount":"0.03","exchange":"bitfinex","type":"buy"},{"timestamp":1532258929,"tid":271325490,"price":"7458.7","amount":"0.005","exchange":"bitfinex","type":"sell"},{"timestamp":1532258925,"tid":271325485,"price":"7465.6","amount":"2.12782551","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325484,"price":"7465.52872261","amount":"1.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325482,"price":"7465.2","amount":"0.05365563","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325481,"price":"7465.0","amount":"2.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325480,"price":"7465.0","amount":"1.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325479,"price":"7464.7","amount":"0.43147654","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325478,"price":"7464.7","amount":"0.23081262","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325477,"price":"7464.7","amount":"0.00470116","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325476,"price":"7463.9","amount":"3.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325475,"price":"7462.8","amount":"0.003","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325474,"price":"7462.5","amount":"2.680067","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325473,"price":"7462.0","amount":"1.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325472,"price":"7461.9","amount":"0.3","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325471,"price":"7461.9","amount":"1.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325470,"price":"7461.8","amount":"0.05","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325469,"price":"7461.7","amount":"2.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325468,"price":"7461.6","amount":"0.4","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325467,"price":"7460.95289052","amount":"1.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325465,"price":"7460.8","amount":"10.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325464,"price":"7460.1","amount":"0.4","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325463,"price":"7460.1","amount":"2.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325462,"price":"7460.0","amount":"0.19602388","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325461,"price":"7458.7","amount":"0.55030101","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325460,"price":"7458.60630996","amount":"1.34","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325458,"price":"7458.4","amount":"2.0","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325457,"price":"7458.07194163","amount":"0.12155","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325455,"price":"7457.1","amount":"2.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325454,"price":"7456.8","amount":"0.0105","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325453,"price":"7456.8","amount":"0.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325452,"price":"7456.0","amount":"0.0095","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325451,"price":"7455.9","amount":"0.003","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325450,"price":"7455.7","amount":"0.5","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325449,"price":"7455.4","amount":"0.08","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325448,"price":"7455.1","amount":"0.03","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325447,"price":"7455.0","amount":"0.2","exchange":"bitfinex","type":"buy"},{"timestamp":1532258925,"tid":271325446,"price":"7455.0","amount":"0.27758665","exchange":"bitfinex","type":"buy"},{"timestamp":1532258913,"tid":271325437,"price":"7454.9","amount":"0.00937454","exchange":"bitfinex","type":"sell"},{"timestamp":1532258913,"tid":271325432,"price":"7454.9","amount":"0.31318866","exchange":"bitfinex","type":"sell"},{"timestamp":1532258913,"tid":271325431,"price":"7454.9","amount":"0.05365634","exchange":"bitfinex","type":"sell"},{"timestamp":1532258912,"tid":271325428,"price":"7455.0","amount":"0.11473589","exchange":"bitfinex","type":"buy"},{"timestamp":1532258912,"tid":271325427,"price":"7455.0","amount":"0.02807309","exchange":"bitfinex","type":"buy"},{"timestamp":1532258905,"tid":271325414,"price":"7455.0","amount":"0.00360554","exchange":"bitfinex","type":"buy"},{"timestamp":1532258900,"tid":271325410,"price":"7455.0","amount":"0.00376096","exchange":"bitfinex","type":"buy"},{"timestamp":1532258893,"tid":271325392,"price":"7454.92241801","amount":"0.05","exchange":"bitfinex","type":"sell"},{"timestamp":1532258888,"tid":271325378,"price":"7454.8","amount":"0.1","exchange":"bitfinex","type":"sell"},{"timestamp":1532258884,"tid":271325374,"price":"7455.0","amount":"0.03","exchange":"bitfinex","type":"sell"},{"timestamp":1532258884,"tid":271325373,"price":"7455.0","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258884,"tid":271325372,"price":"7455.6","amount":"0.04023787","exchange":"bitfinex","type":"sell"},{"timestamp":1532258881,"tid":271325358,"price":"7456.4","amount":"0.9885","exchange":"bitfinex","type":"sell"},{"timestamp":1532258881,"tid":271325357,"price":"7456.6","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258881,"tid":271325356,"price":"7456.9","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325350,"price":"7459.3","amount":"0.762","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325349,"price":"7459.6","amount":"0.03","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325348,"price":"7459.7","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325347,"price":"7459.7","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325346,"price":"7459.7","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258875,"tid":271325345,"price":"7460.0","amount":"0.002","exchange":"bitfinex","type":"sell"},{"timestamp":1532258857,"tid":271325250,"price":"7461.6","amount":"0.0105","exchange":"bitfinex","type":"sell"},{"timestamp":1532258857,"tid":271325249,"price":"7461.6","amount":"0.00932833","exchange":"bitfinex","type":"sell"},{"timestamp":1532258857,"tid":271325248,"price":"7461.77419372","amount":"0.00017167","exchange":"bitfinex","type":"sell"},{"timestamp":1532258854,"tid":271325234,"price":"7461.77419372","amount":"0.047","exchange":"bitfinex","type":"sell"},{"timestamp":1532258848,"tid":271325229,"price":"7462.8","amount":"0.439","exchange":"bitfinex","type":"sell"},{"timestamp":1532258848,"tid":271325228,"price":"7462.8","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258840,"tid":271325216,"price":"7463.7","amount":"0.05","exchange":"bitfinex","type":"sell"},{"timestamp":1532258837,"tid":271325211,"price":"7465.7","amount":"0.1","exchange":"bitfinex","type":"sell"},{"timestamp":1532258834,"tid":271325209,"price":"7465.9","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258834,"tid":271325208,"price":"7466.7","amount":"0.00033395","exchange":"bitfinex","type":"sell"},{"timestamp":1532258834,"tid":271325207,"price":"7466.7","amount":"0.43666605","exchange":"bitfinex","type":"sell"},{"timestamp":1532258834,"tid":271325206,"price":"7466.7","amount":"0.05033395","exchange":"bitfinex","type":"sell"},{"timestamp":1532258817,"tid":271325183,"price":"7466.7","amount":"0.009219","exchange":"bitfinex","type":"sell"},{"timestamp":1532258813,"tid":271325179,"price":"7466.7","amount":"0.0105","exchange":"bitfinex","type":"sell"},{"timestamp":1532258813,"tid":271325178,"price":"7466.7","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258810,"tid":271325168,"price":"7466.8","amount":"0.013","exchange":"bitfinex","type":"buy"},{"timestamp":1532258797,"tid":271325151,"price":"7466.8","amount":"0.005","exchange":"bitfinex","type":"buy"},{"timestamp":1532258797,"tid":271325148,"price":"7466.7","amount":"0.00931654","exchange":"bitfinex","type":"sell"},{"timestamp":1532258793,"tid":271325133,"price":"7466.7","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258793,"tid":271325132,"price":"7466.7","amount":"0.0075","exchange":"bitfinex","type":"sell"},{"timestamp":1532258793,"tid":271325131,"price":"7466.7","amount":"0.003","exchange":"bitfinex","type":"sell"},{"timestamp":1532258791,"tid":271325127,"price":"7466.8","amount":"0.005","exchange":"bitfinex","type":"buy"},{"timestamp":1532258787,"tid":271325122,"price":"7466.7","amount":"0.3","exchange":"bitfinex","type":"sell"},{"timestamp":1532258778,"tid":271325112,"price":"7466.8","amount":"0.01678334","exchange":"bitfinex","type":"buy"},{"timestamp":1532258773,"tid":271325072,"price":"7466.8","amount":"0.003","exchange":"bitfinex","type":"buy"},{"timestamp":1532258772,"tid":271325063,"price":"7466.7","amount":"0.0095","exchange":"bitfinex","type":"sell"},{"timestamp":1532258771,"tid":271325062,"price":"7466.7","amount":"0.0105","exchange":"bitfinex","type":"sell"}]
+    
+    function updateTable(transactions) {
+        let htmlText = '';
+        for(let i in transactions) {
+            htmlText += `<tr><td>${new Date(transactions[i]['timestamp'])}</td>`;
+            htmlText += `<td>${transactions[i]['tid']}</td>`;
+            htmlText += `<td>${transactions[i]['price']}</td>`;
+            htmlText += `<td>${transactions[i]['amount']}</td>`;
+            htmlText += `<td>${transactions[i]['exchange']}</td>`;
+            htmlText += `<td>${transactions[i]['type']}</td>`;
+            htmlText += `</tr>`;
+        }
+        $(`#table`).html(htmlText);
+    }
+    updateTable(transactions);
+
 </script>
 </body>
 </html>
