@@ -38,9 +38,9 @@
     <!-- Logo -->
     <a href="../../index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>ZZ</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Zing Zing</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -121,8 +121,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Morris Charts
-        <small>Preview sample</small>
+        Token Overview
       </h1>
     </section>
 
@@ -134,7 +133,7 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
+              <h3 class="box-title">Token Heath</h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -154,78 +153,18 @@
             <!-- /.col (LEFT) -->
             <div class="box">
                 <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>
+                <h3 class="box-title">Token Overview</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Token name</th>
+                    <th>risk status</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.5
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5.5</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 6
-                    </td>
-                    <td>Win 98+</td>
-                    <td>6</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 7</td>
-                    <td>Win XP SP2+</td>
-                    <td>7</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>AOL browser (AOL desktop)</td>
-                    <td>Win XP</td>
-                    <td>6</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                    </tr>
+                    <tbody id='table'>
                     </tbody>
                 </table>
                 </div>
@@ -429,9 +368,14 @@
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="../../bower_components/raphael/raphael.min.js"></script>
 <script src="../../bower_components/morris.js/morris.min.js"></script>
+<!-- DataTables -->
+<link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -442,19 +386,41 @@
 <script>
   $(function () {
     "use strict";
+    $('#example1').DataTable();
     //DONUT CHART
     var donut = new Morris.Donut({
       element: 'sales-chart',
       resize: true,
       colors: ["#FFC200", "#f56954", "#00a65a"],
       data: [
-        {label: "Amber", value: 12},
-        {label: "Red", value: 30},
-        {label: "Green", value: 20}
+        {label: "Amber", value: 83},
+        {label: "Red", value: 80},
+        {label: "Green", value: 91}
       ],
       hideHover: 'auto'
     });
   });
+
+  const transactions = ["btcusd","ltcusd","ltcbtc","ethusd","ethbtc","etcbtc","etcusd","rrtusd","rrtbtc","zecusd","zecbtc","xmrusd","xmrbtc","dshusd","dshbtc","btceur","btcjpy","xrpusd","xrpbtc","iotusd","iotbtc","ioteth","eosusd","eosbtc","eoseth","sanusd","sanbtc","saneth","omgusd","omgbtc","omgeth","bchusd","bchbtc","bcheth","neousd","neobtc","neoeth","etpusd","etpbtc","etpeth","qtmusd","qtmbtc","qtmeth","avtusd","avtbtc","avteth","edousd","edobtc","edoeth","btgusd","btgbtc","datusd","datbtc","dateth","qshusd","qshbtc","qsheth","yywusd","yywbtc","yyweth","gntusd","gntbtc","gnteth","sntusd","sntbtc","snteth","ioteur","batusd","batbtc","bateth","mnausd","mnabtc","mnaeth","funusd","funbtc","funeth","zrxusd","zrxbtc","zrxeth","tnbusd","tnbbtc","tnbeth","spkusd","spkbtc","spketh","trxusd","trxbtc","trxeth","rcnusd","rcnbtc","rcneth","rlcusd","rlcbtc","rlceth","aidusd","aidbtc","aideth","sngusd","sngbtc","sngeth","repusd","repbtc","repeth","elfusd","elfbtc","elfeth","btcgbp","etheur","ethjpy","ethgbp","neoeur","neojpy","neogbp","eoseur","eosjpy","eosgbp","iotjpy","iotgbp","iosusd","iosbtc","ioseth","aiousd","aiobtc","aioeth","requsd","reqbtc","reqeth","rdnusd","rdnbtc","rdneth","lrcusd","lrcbtc","lrceth","waxusd","waxbtc","waxeth","daiusd","daibtc","daieth","cfiusd","cfibtc","cfieth","agiusd","agibtc","agieth","bftusd","bftbtc","bfteth","mtnusd","mtnbtc","mtneth","odeusd","odebtc","odeeth","antusd","antbtc","anteth","dthusd","dthbtc","dtheth","mitusd","mitbtc","miteth","stjusd","stjbtc","stjeth","xlmusd","xlmeur","xlmjpy","xlmgbp","xlmbtc","xlmeth","xvgusd","xvgeur","xvgjpy","xvggbp","xvgbtc","xvgeth","bciusd","bcibtc","mkrusd","mkrbtc","mkreth","venusd","venbtc","veneth","kncusd","kncbtc","knceth","poausd","poabtc","poaeth","lymusd","lymbtc","lymeth","utkusd","utkbtc","utketh","veeusd","veebtc","veeeth","dadusd","dadbtc","dadeth","orsusd","orsbtc","orseth","aucusd","aucbtc","auceth","poyusd","poybtc","poyeth","fsnusd","fsnbtc","fsneth","cbtusd","cbtbtc","cbteth","zcnusd","zcnbtc","zcneth","senusd","senbtc","seneth","ncausd","ncabtc","ncaeth","cndusd","cndbtc","cndeth","ctxusd","ctxbtc","ctxeth","paiusd","paibtc","seeusd","seebtc","seeeth","essusd","essbtc","esseth","atmusd","atmbtc","atmeth","hotusd","hotbtc","hoteth","dtausd","dtabtc","dtaeth","iqxusd","iqxbtc","iqxeos"]
+    function updateTable(transactions) {
+        let htmlText = '';
+        for(let i in transactions) {
+            htmlText += `<tr><td>${transactions[i]}</td>`;
+            const rn = Math.random() * 3;
+            let icon;
+            if (rn < 1.0) {
+              icon = '<span class="label label-success">Green</span>';
+            } else if(rn < 2.0) {
+              icon = '<span class="label label-warning">Amber</span>';
+            } else {
+              icon = '<span class="label label-danger">Red</span>';
+            }
+            htmlText += `<td>${icon}</td>`;
+            htmlText += `</tr>`;
+        }
+        $(`#table`).html(htmlText);
+    }
+    updateTable(transactions);
 </script>
 </body>
 </html>
