@@ -38,7 +38,32 @@ def get_active_symbols(exchange):
 def is_active_symbol(exchange, symbol):
     return ('.' not in symbol) and (('active' not in exchange.markets[symbol]) or (exchange.markets[symbol]['active']))
 
+def process_median_percent_change():
+    data_json = dict()
+    for symbol in tqdm(get_active_symbols(bitfinex)):
+        print('[INFO] Fetching symbol: {0}'.format(symbol))
+        median_percent_change = caclulate_median_percent_change(bitfinex, symbol)
+        tmp = dict()
+        tmp['medianpc'] = median_percent_change
+        data_json[symbol] = tmp
+        with open('MedianPercentChange.json', 'w') as outfile:
+            json.dump(data_json, outfile)
+            
+def load_median_percent_change():
+    with open('MedianPercentChange.json', 'r') as outfile:
+        text = outfile.read()
+        return json.loads(text)
 
+def caculate_thresholds():
+    amber = 0.7
+    red = 0.9
+    data = load_median_percent_change()
+    medianpcs = [item['medianpc'] for key, item in data.items()]
+    medianpcs.sort()
+    amber_threshold = medianpcs[int(amber*len(medianpcs))]
+    red_threshold =   medianpcs[int(red*len(medianpcs))]
+    print('Amber Threshold: {0}'.format(amber_threshold))
+    print('Red Threshold: {0}'.format(red_threshold))      
 # Poll the 24 Hour volume data
 
 # Params
@@ -50,13 +75,5 @@ timestamp_start = int(np.floor(time.time())) - days_back * 24 * 60 * 60
 
 # main
 if __name__ == '__main__':
-    data_json = dict()
-    for symbol in tqdm(get_active_symbols(bitfinex)):
-        print('[INFO] Fetching symbol: {0}'.format(symbol))
-        median_percent_change = caclulate_median_percent_change(bitfinex, symbol)
-        tmp = dict()
-        tmp['medianpc'] = median_percent_change
-        data_json[symbol] = tmp
-        with open('MedianPercentChange.json', 'w') as outfile:
-            json.dump(data_json, outfile)
-        
+    
+  
