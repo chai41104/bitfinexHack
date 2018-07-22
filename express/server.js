@@ -55,6 +55,8 @@ ws.open()
 
 // app.use(express.static(path.join(__dirname, './www')));
 app.use('/theme', express.static(path.join(__dirname, '../public')));
+app.use('/json', express.static(path.join(__dirname, './json')));
+app.use('/chart', express.static(path.join(__dirname, 'chart.html')));
 
 app.get('/', function(request, response){
 	response.setHeader('Access-Control-Allow-Origin', '*')
