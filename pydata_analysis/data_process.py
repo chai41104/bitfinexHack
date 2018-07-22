@@ -79,4 +79,18 @@ if __name__ == '__main__':
     for key, val_d in data.items():
         symbol_id = bitfinex.market_id(key)
         print(symbol_id)
-  
+        
+    # Correlation
+    
+    # Generate some random time series data
+#    X = pd.Series(np.random.uniform(low=-1, high=1, size=100)).cumsum()
+#    X.plot()
+#    Y = pd.Series(np.random.uniform(low=-1, high=1, size=100)).cumsum()
+#    Y.plot()
+#    
+#    Z = pd.DataFrame([X,Y])
+#    A = Z.corr(method='pearson')
+    lending_json = bitfinex.public_get_lends_currency(params={'currency':'usd', 'limit_lends': 500})
+    with open('LendingUSDRates.json', 'w') as outfile:
+        json.dump(lending_json, outfile)
+    
