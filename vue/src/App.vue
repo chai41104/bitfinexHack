@@ -1,6 +1,7 @@
 <template>
   <div id="main" class="container">
 
+    <h1>Crypto Trade Risk Analyser</h1>
     <div class="nav">
       <ul>
         <li><router-link to="/">Trades</router-link></li>

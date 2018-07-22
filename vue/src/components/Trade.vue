@@ -1,6 +1,6 @@
 <template>
   <div class="crypto-list">
-    <h1>Crypto Trade Risk Analyser - Trade</h1>
+    <h1>Trades</h1>
     <table>
       <thead>
         <tr>
@@ -70,7 +70,7 @@ export default {
           this.tickers[symbol] = res.data[i]
         }
       })
-    }, 3000)
+    }, 1500)
   },
   computed: {
     symbols () {
@@ -84,9 +84,10 @@ export default {
   watch: {
     tickers: {
       handler (newValue, oldValue) {
-        console.log(newValue)
+        // console.log(newValue)
         
         for (var i=0; i<this.symbols.length; i++) {
+
           // TweenLite.to(this.$data.tickers[k], 50, {bid: newValue[k].bid})
           // console.log(this.$refs.bid[0])
           // alert(this.tickers[this.symbols[i]].bid, newValue[this.symbols[i]])
@@ -102,7 +103,7 @@ export default {
           this.animateElement(i,"high")
           this.animateElement(i,"low")
 
-          console.log(this.tickers[this.symbols[i]].bid, this.oldTickers[this.symbols[i]].bid)
+          // console.log(this.tickers[this.symbols[i]].bid, this.oldTickers[this.symbols[i]].bid)
         }
         this.oldTickers = JSON.parse(JSON.stringify(this.tickers))
       } ,
@@ -111,13 +112,14 @@ export default {
   },
   methods: {
     animateElement (i, keyValue) {
+          // console.log(this.symbols[i], i, keyValue)
           let refObj = this.$refs[keyValue][i]
           if ( this.tickers[this.symbols[i]][keyValue] !== this.oldTickers[this.symbols[i]][keyValue] ) {
-            TweenLite.to(refObj, 1, {
-              backgroundColor:"#aaa", 
+            TweenLite.to(refObj, 0.3, {
+              backgroundColor:"#aaa",
               color:"red",
               onComplete: () => {
-                TweenLite.to(refObj, 2, {backgroundColor: "white", color: "black"})
+                TweenLite.to(refObj, 0.3, {backgroundColor: "white", color: "black"})
               }
             })
           }

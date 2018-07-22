@@ -1,6 +1,6 @@
 <template>
   <div class="crypto-list">
-    <h1>- Margins</h1>
+    <h1>Margins</h1>
     <table>
       <thead>
         <tr>
