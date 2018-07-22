@@ -54,7 +54,7 @@ ws.onTicker({}, (ticker) => {
 ws.open()
 
 // app.use(express.static(path.join(__dirname, './www')));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/theme', express.static(path.join(__dirname, '../public')));
 
 app.get('/', function(request, response){
 	response.setHeader('Access-Control-Allow-Origin', '*')
