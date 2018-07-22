@@ -73,7 +73,9 @@ def caculate_thresholds():
 days_back = 100
 percent_change_thres = 0.4
 
-timestamp_start = int(np.floor(time.time())) - days_back * 24 * 60 * 60
+30m_minutes_back = 300
+#timestamp_start = int(np.floor(time.time())) - days_back * 24 * 60 * 60
+timestamp_start = int(np.floor(time.time())) - 30m_minutes_back * 30 * 60
 
 # main
 if __name__ == '__main__':
@@ -101,7 +103,7 @@ if __name__ == '__main__':
     rates_usd.plot()
     
     
-    ohlcv = bitfinex.fetch_ohlcv('BTC/USDT', timeframe='1d', since=timestamp_start * 1000)
+    ohlcv = bitfinex.fetch_ohlcv('BTC/USDT', timeframe='12h', since=1531872000 * 1000)
     df_candles = pd.DataFrame(ohlcv)
     close = df_candles[4]
     close_f = interpolate.interp1d(df_candles[0], df_candles[4], bounds_error=False)
@@ -126,6 +128,7 @@ if __name__ == '__main__':
     color = 'tab:blue'
     ax2.set_ylabel('Close BTC/USD', color=color)  # we already handled the x-label with ax1
     ax2.plot(close, color=color)
+    ax2.set_ylim([7250,7500])
     ax2.tick_params(axis='y', labelcolor=color)
 
     fig.tight_layout() 
