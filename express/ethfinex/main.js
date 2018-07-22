@@ -18,7 +18,8 @@ order.getSymbol(rest, (err, res) => {
 	for(let i in symbols) {
 		order.ticker(rest, symbols[i], (err, res) => {
 			if (err) console.log(err)
-			console.log(res)
+			console.log(symbols[i]);
+			console.log(res);
 		});
 	}
 });
