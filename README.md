@@ -40,7 +40,7 @@ The folders are structured as follows:
     public/ - contains the theme used for demo purposes
     pydata_analysis/ - contains python script used to analyse volume and lending data
     vue - A Vue.js project that contains the tables used for
-```
+
 
 Run the trading and margin servers used for streaming data
 
