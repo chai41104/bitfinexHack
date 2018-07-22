@@ -30,6 +30,7 @@ According to EY, more than 80% ICO / cryptocurrencies are potentially scam relat
 
 Of the 20% remaining, 25% of a non-scam ICO startups die within 1st year. 71% within next 10yrs. The alarming figure could be reduced if early signs of problem can be detected for intervention (According to forbes)
 
+we enable traders to subscribe to market data using hypercore , aggregating and publish their trade insight as a feed using peer-to-peer sharing.
 
 ## HOW TO RUN THE DEMO
 
@@ -64,3 +65,19 @@ npm install
 npm run dev
 ```
 
+
+Run hypercore to sub/pub market data
+
+```
+cd hypercore
+npm install
+
+(for publishing)
+
+node backbone.js
+
+(for subscribing)
+
+node subscribe.js
+```
+ 

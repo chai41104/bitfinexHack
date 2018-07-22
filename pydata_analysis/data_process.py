@@ -7,10 +7,12 @@ import ccxt
 import numpy as np
 import time
 import pandas as pd
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 #from scipy.stats import norm
 import json
 from tqdm import tqdm
+from scipy import interpolate
+
 bitfinex = ccxt.bitfinex({'enableRateLimit': True})
 bitfinex.rateLimit = bitfinex.rateLimit * 3
 bitfinex.load_markets()
@@ -90,7 +92,41 @@ if __name__ == '__main__':
 #    
 #    Z = pd.DataFrame([X,Y])
 #    A = Z.corr(method='pearson')
-    lending_json = bitfinex.public_get_lends_currency(params={'currency':'usd', 'limit_lends': 500})
+    lending_json_usd = bitfinex.public_get_lends_currency(params={'currency':'usd', 'limit_lends': 100})#9999})
+    lending_json_btc = bitfinex.public_get_lends_currency(params={'currency':'btc', 'limit_lends': 50000})
+    lending_usd_df = pd.DataFrame(lending_json_usd)
+    rates_usd = pd.to_numeric(lending_usd_df['rate'])
+    rates_usd_f = interpolate.interp1d(lending_usd_df['timestamp'], rates_usd, bounds_error=False)
+    rates_usd.index = pd.to_datetime(lending_usd_df['timestamp'], unit='s')
+    rates_usd.plot()
+    
+    
+    ohlcv = bitfinex.fetch_ohlcv('BTC/USDT', timeframe='1d', since=timestamp_start * 1000)
+    df_candles = pd.DataFrame(ohlcv)
+    close = df_candles[4]
+    close_f = interpolate.interp1d(df_candles[0], df_candles[4], bounds_error=False)
+    close.index = pd.to_datetime(df_candles[0], unit='ms')
+    close.plot()
+    
+    rates_usd_close = rates_usd_f(df_candles[0])
+    
     with open('LendingUSDRates.json', 'w') as outfile:
         json.dump(lending_json, outfile)
+        
+    fig, ax1 = plt.subplots()
     
+    color = 'tab:red'
+    ax1.set_xlabel('time (s)')
+    ax1.set_ylabel('lending USD rate', color=color)
+    ax1.plot(rates_usd, color=color)
+    ax1.tick_params(axis='y', labelcolor=color)
+    
+    ax2 = ax1.twinx() 
+    
+    color = 'tab:blue'
+    ax2.set_ylabel('Close BTC/USD', color=color)  # we already handled the x-label with ax1
+    ax2.plot(close, color=color)
+    ax2.tick_params(axis='y', labelcolor=color)
+
+    fig.tight_layout() 
+    plt.show()
