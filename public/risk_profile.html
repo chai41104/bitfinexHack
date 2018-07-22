@@ -157,17 +157,17 @@
                             <tr>
                               <td>ETH/USD</td>
                               <td><span id='state1' class="label label-warning">Amber</span></td>
-                              <td><button id='buy1' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                              <td><button id='buy1' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>
                             <tr>
                               <td>ETH/BTC</td>
                               <td><span id='state2' class="label label-success">Green</span></td>
-                              <td><button id='buy2' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                              <td><button id='buy2' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>
                             <tr>
                               <td>EUX/USX</td>
                               <td><span id='state3' class="label label-danger">Red</span></td>
-                              <td><button id='buy3' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                              <td><button id='buy3' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>   
                           </table>
                         </div>
@@ -411,6 +411,10 @@
             $(`#buy${i}`).removeClass('disabled');
         }
       }
+  }
+  function sendOrder() {
+    console.log('sendOrder');
+    const win = window.open("/sendorder", "_blank");
   }
 </script>
 </body>
