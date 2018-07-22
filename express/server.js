@@ -3,6 +3,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
+const rest = require('./ethfinex/ethfinex');
+const order = require('./ethfinex/order');
 const BFX = require('bitfinex-api-node')
 
 const bfx = new BFX({
@@ -79,5 +81,9 @@ app.listen(PORT, function(){
 });
 
 app.get('/sendorder', function(request, response) {
-  
+	order.sendOrder(rest, 'ETHUSD', '1', '500', (err, res) => {
+		if (err) console.log(err)
+		console.log(res)
+		response.send('order placed')
+	});	
 })
