@@ -35,9 +35,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">IT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">I-Tick</span>
+     <span class="logo-mini"><b>ZZ</b></span>
+     <!-- logo for regular state and mobile devices -->
+     <span class="logo-lg"><b>Zing Zing</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -131,7 +131,7 @@
     <section class="content-header">
       <h1>
         Chat
-        <small>Chat with smart claim robot.</small>
+        <small>Chat with smart robot.</small>
       </h1>
     </section>
 
@@ -146,7 +146,7 @@
             <!-- timeline time label -->
             <li class="time-label">
                   <span class="bg-red">
-                    04 Nov. 2017
+                    22 July. 2018
                   </span>
             </li>
             <!-- /.timeline-label -->
@@ -383,14 +383,14 @@
     }
     else if(state == 2) {
       information['reportNumber'] = responseText;
-      addQuestionElement('Please describe your loss!');
+      addQuestionElement('The health of BTC/USD is Green. What else I can help you?');
     }
     else if(state == 3) {
       information['yourLoss'] = responseText;
-      addResponseElement('Thank you for your submition. <br /> Your claim is in the process now. <br /> We will contact you once the process done.');
-      addResponseElement('The claim record has been sent to your register email.');
+      addResponseElement('I have sent your order to the ETHFinex.');
+      addResponseElement('You order has been place. Please check your order in https://ethfinex.com');
     }
-    addInputElement();
+    if (state < 3) addInputElement();
     state++;
   }
   function addInputElement() {
@@ -453,7 +453,7 @@
     }
   }
   addQuestionElement('Hi, how can I help you today?');
-  addResponseElement(responseText);
+  addInputElement();
 </script>
 
 <!-- jQuery 3 -->
