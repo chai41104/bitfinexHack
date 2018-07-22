@@ -1,10 +1,28 @@
 <template>
   <div class="crypto-list">
     <h1>Trades</h1>
+    Legend: 
+    <table>
+      <tr>
+        <td>Healthy</td>
+        <td style="background-color: green"></td>
+
+        <td>moderate</td>
+        <td style="background-color: orange"></td>
+
+        <td>Unhealthy</td>
+        <td style="background-color: red"></td>
+      </tr>
+    </table>
+
+    <hr>
+    <hr>
+    n
     <table>
       <thead>
         <tr>
           <th>Symbol</th>
+          <th>HEALTH</th>
           <th>Bid</th>
           <th>Bid Size</th>
           <th>Ask</th>
@@ -19,6 +37,9 @@
       <tbody>
         <tr v-for="(ticker, symbol) in tickers">
           <td>{{symbol}}</td>
+          <td ref="color" :style="{backgroundColor: getColorFromHealth(ticker.health)}">
+            {{ticker.health}}
+          </td>
 
           <td ref="bid">
                {{ticker.bid}}
@@ -55,7 +76,7 @@ export default {
     }
   },
   mounted () {
-
+    this.loadHealths()
     this.oldTickers = JSON.parse(JSON.stringify(this.tickers))
 
     // window.setTimeout(() => {
@@ -63,7 +84,7 @@ export default {
     // }, 1000)
 
     window.setInterval(() => {
-      axios.get('http://localhost:3000', 'get').then(res => {
+      axios.get('http://localhost:3000/data', 'get').then(res => {
         console.log(res.data)
         for (var i=0; i<res.data.length; i++) {
           let symbol = res.data[i].symbol
@@ -106,11 +127,25 @@ export default {
           // console.log(this.tickers[this.symbols[i]].bid, this.oldTickers[this.symbols[i]].bid)
         }
         this.oldTickers = JSON.parse(JSON.stringify(this.tickers))
+
+        // reload health data
+        this.loadHealths()
       } ,
       deep: true
     }
   },
   methods: {
+    loadHealths () {
+      let healths = require('./health.json')
+      for (var i=0; i<this.symbols.length; i++) {
+        let symb = this.symbols[i].substr(1)
+        console.log(symb)
+        console.log(healths[symb])
+        if (healths[symb]) {
+          this.tickers[this.symbols[i]].health = healths[symb].medianpc
+        }
+      }
+    },
     animateElement (i, keyValue) {
           // console.log(this.symbols[i], i, keyValue)
           let refObj = this.$refs[keyValue][i]
@@ -123,6 +158,20 @@ export default {
               }
             })
           }
+    },
+    getColorFromHealth (healthvalue) {
+      let x = 0.2478
+      let y = 0.5411
+      if (healthvalue < x) {
+        return 'green'
+      }
+      if (healthvalue >= x && healthvalue < y) {
+        return 'orange'
+      }
+      if (!healthvalue) {
+        return 'white'
+      }
+      return 'red'
     }
   }
 }
