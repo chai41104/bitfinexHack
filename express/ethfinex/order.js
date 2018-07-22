@@ -19,5 +19,14 @@ module.exports = {
     }).catch(err => {
       console.log(err);
     })
-  }
+  },
+  sendOrder: (rest, symbol, amount, price, cb) => {
+    rest.new_order(symbol, amount, price, null, 'sell', 'exchange market', cb);
+  },
+  getSymbol: (rest, callBackFunc) => {
+    rest.get_symbols(callBackFunc);
+  },
+  ticker: (rest, symbol, callBackFunc) => {
+    rest.ticker(symbol, callBackFunc);
+  },
 }

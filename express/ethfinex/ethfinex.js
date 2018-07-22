@@ -6,7 +6,7 @@ const bfx = new BFX({
   rest: {
     url: url
   }
-})
+});
 
-const rest = bfx.rest(2, { transform: true });
+const rest = bfx.rest(version = 1);
 module.exports = rest;
