@@ -80,8 +80,16 @@ app.listen(PORT, function(){
 	console.log('http://localhost:' + PORT);
 });
 
-app.get('/sendorder', function(request, response) {
-	order.sendOrder(rest, 'ETHUSD', '1', '500', (err, res) => {
+app.get('/sendordersell', function(request, response) {
+	order.sendOrder(rest, 'ETHUSD', '1', '500', 'sell', (err, res) => {
+		if (err) console.log(err)
+		console.log(res)
+		response.send('order placed')
+	});	
+});
+
+app.get('/sendorderbuy', function(request, response) {
+	order.sendOrder(rest, 'ETHUSD', '1', '500', 'buy', (err, res) => {
 		if (err) console.log(err)
 		console.log(res)
 		response.send('order placed')

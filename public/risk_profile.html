@@ -152,22 +152,26 @@
                             <tr>
                               <th>Pair</th>
                               <th>Risk Status</th>
-                              <th>Send Order</th>
+                              <th>Buy Order</th>
+                              <th>Sell Order</th>
                             </tr>
                             <tr>
                               <td>ETH/USD</td>
                               <td><span id='state1' class="label label-warning">Amber</span></td>
-                              <td><button id='buy1' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
+                              <td><button id='buy1' type="button" onclick="sendOrder('buy');" class="btn btn-block btn-success btn-xs">buy</button></td>
+                              <td><button id='sell1' type="button" onclick="sendOrder('sell');" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>
                             <tr>
                               <td>ETH/BTC</td>
                               <td><span id='state2' class="label label-success">Green</span></td>
-                              <td><button id='buy2' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
+                              <td><button id='buy2' type="button" onclick="sendOrder('buy');" class="btn btn-block btn-success btn-xs">buy</button></td>
+                              <td><button id='sell2' type="button" onclick="sendOrder('sell');" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>
                             <tr>
                               <td>EUX/USX</td>
                               <td><span id='state3' class="label label-danger">Red</span></td>
-                              <td><button id='buy3' type="button" onclick="sendOrder();" class="btn btn-block btn-danger btn-xs">sell</button></td>
+                              <td><button id='buy3' type="button" onclick="sendOrder('buy');" class="btn btn-block btn-success btn-xs">buy</button></td>
+                              <td><button id='sell3' type="button" onclick="sendOrder('sell');" class="btn btn-block btn-danger btn-xs">sell</button></td>
                             </tr>   
                           </table>
                         </div>
@@ -412,9 +416,14 @@
         }
       }
   }
-  function sendOrder() {
+  function sendOrder(type) {
     console.log('sendOrder');
-    const win = window.open("/sendorder", "_blank");
+    if(type === 'sell') {
+        const win = window.open("/sendordersell", "_blank");
+    }
+    else if(type === 'buy') {
+        const win = window.open("/sendorderbuy", "_blank");
+    }
   }
 </script>
 </body>

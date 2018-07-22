@@ -20,8 +20,8 @@ module.exports = {
       console.log(err);
     })
   },
-  sendOrder: (rest, symbol, amount, price, cb) => {
-    rest.new_order(symbol, amount, price, null, 'sell', 'exchange market', cb);
+  sendOrder: (rest, symbol, amount, price, type, cb) => {
+    rest.new_order(symbol, amount, price, null, type, 'exchange market', cb);
   },
   getSymbol: (rest, callBackFunc) => {
     rest.get_symbols(callBackFunc);
