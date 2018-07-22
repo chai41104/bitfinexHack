@@ -411,8 +411,10 @@
         || ($(`#state${i}`).html() === 'Amber' && risk < 2)
         || ($(`#state${i}`).html() === 'Green' && risk < 1)) {
             $(`#buy${i}`).addClass('disabled');
+            $(`#sell${i}`).addClass('disabled');
         } else {
             $(`#buy${i}`).removeClass('disabled');
+            $(`#sell${i}`).removeClass('disabled');
         }
       }
   }
