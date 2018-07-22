@@ -105,6 +105,12 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Current Risk Profile</li>
+        <li><a href="#" class="text-red" id='risk_status'> Red </a></li>
+        <li class="header">Select your risk profile</li>
+        <li><a href="javascript:updateRisk('Red');"><i class="fa fa-circle-o text-red"></i> <span>Red</span></a></li>
+        <li><a href="javascript:updateRisk('Amber');"><i class="fa fa-circle-o text-yellow"></i> <span>Amber</span></a></li>
+        <li><a href="javascript:updateRisk('Green');"><i class="fa fa-circle-o text-green"></i> <span>Green</span></a></li>
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
@@ -128,110 +134,52 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-12">
-
-          <!-- DONUT CHART -->
-          <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="box-body chart-responsive">
-              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-
-        </div>
-        
-        <div class="col-md-12">
-            <!-- /.col (LEFT) -->
-            <div class="box">
-                <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td> 4</td>
-                    <td>X</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5</td>
-                    <td>C</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 5.5
-                    </td>
-                    <td>Win 95+</td>
-                    <td>5.5</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet
-                        Explorer 6
-                    </td>
-                    <td>Win 98+</td>
-                    <td>6</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>Internet Explorer 7</td>
-                    <td>Win XP SP2+</td>
-                    <td>7</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Trident</td>
-                    <td>AOL browser (AOL desktop)</td>
-                    <td>Win XP</td>
-                    <td>6</td>
-                    <td>A</td>
-                    </tr>
-                    <tr>
-                    <td>Gecko</td>
-                    <td>Firefox 1.0</td>
-                    <td>Win 98+ / OSX.2+</td>
-                    <td>1.7</td>
-                    <td>A</td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
-                <!-- /.box-body -->
-            </div>
-        </div>
+            <div class="row">
+                    <div class="col-xs-12">
+                      <div class="box">
+                        <div class="box-header">
+                          <h3 class="box-title">Responsive Hover Table</h3>
+            
+                          <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+            
+                              <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                          <table class="table table-hover">
+                            <tr>
+                              <th>Pair</th>
+                              <th>Risk Status</th>
+                              <th>Send Order</th>
+                            </tr>
+                            <tr>
+                              <td>BTC/USD</td>
+                              <td><span id='state1' class="label label-warning">Amber</span></td>
+                              <td><button id='buy1' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                            </tr>
+                            <tr>
+                              <td>BTC/USD</td>
+                              <td><span id='state2' class="label label-success">Green</span></td>
+                              <td><button id='buy2' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                            </tr>
+                            <tr>
+                              <td>BTC/USD</td>
+                              <td><span id='state3' class="label label-danger">Red</span></td>
+                              <td><button id='buy3' type="button" class="btn btn-block btn-primary btn-xs">Buy</button></td>
+                            </tr>   
+                          </table>
+                        </div>
+                        <!-- /.box-body -->
+                      </div>
+                      <!-- /.box -->
+                    </div>
+                  </div>
       </div>
       <!-- /.box -->
     </div>
@@ -440,21 +388,34 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    "use strict";
-    //DONUT CHART
-    var donut = new Morris.Donut({
-      element: 'sales-chart',
-      resize: true,
-      colors: ["#FFC200", "#f56954", "#00a65a"],
-      data: [
-        {label: "Amber", value: 12},
-        {label: "Red", value: 30},
-        {label: "Green", value: 20}
-      ],
-      hideHover: 'auto'
-    });
-  });
+  function updateRisk(status) {
+      $('#risk_status').html(status);
+      let riskClass;
+      let risk;
+      if (status === 'Red') {
+        riskClass = 'text-red';
+        risk = 3;
+      }
+      else if (status === 'Amber') {
+        riskClass = 'text-yellow';
+        risk = 2;
+      }
+      else if (status === 'Green') {
+        riskClass = 'text-green';
+        risk = 1;
+      }
+      $("#risk_status").attr('class', riskClass);
+
+      for(let i = 1; i <= 3; ++i) {
+        if(($(`#state${i}`).html() === 'Red' && risk < 3)
+        || ($(`#state${i}`).html() === 'Amber' && risk < 2)
+        || ($(`#state${i}`).html() === 'Green' && risk < 1)) {
+            $(`#buy${i}`).addClass('disabled');
+        } else {
+            $(`#buy${i}`).removeClass('disabled');
+        }
+      }
+  }
 </script>
 </body>
 </html>
